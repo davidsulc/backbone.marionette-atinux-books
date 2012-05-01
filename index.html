@@ -11,6 +11,16 @@
 
   <div id="content"></div>
 
+  <!-- templates -->
+  <script type="text/template" id="library-layout">
+    <div id="searchBar">
+      Search : <input type="text" name="search" autocomplete="off" id="searchTerm" value="" />
+      <img src="assets/images/loader.gif" alt="Loading..." id="spinner" />
+    </div>
+
+    <div id="bookContainer"></div>
+  </script>
+
   <!-- Thirt-Party Libraries (Order matters) -->
   <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
   <script src="http://cdnjs.cloudflare.com/ajax/libs/json2/20110223/json2.js"></script>
@@ -20,6 +30,7 @@
   
   <!-- Application core (Order matters) -->
   <script type="text/javascript" src="assets/javascript/app.js"></script>
+  <script type="text/javascript" src="assets/javascript/app.library_app.js"></script>
 
   <script type="text/javascript">
     MyApp.start();
