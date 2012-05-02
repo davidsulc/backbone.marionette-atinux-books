@@ -19,6 +19,7 @@ MyApp.LibraryApp = function(){
       var self = this;
       _.bindAll(this, "search");
       MyApp.vent.on("search:term", function(term){ self.search(term); });
+      MyApp.vent.on("search:more", function(){ console.log("Need to load more books!"); });
       
       // the number of books we fetch each time
       this.maxResults = 40;

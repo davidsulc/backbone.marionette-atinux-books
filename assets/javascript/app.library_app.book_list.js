@@ -11,11 +11,15 @@ MyApp.LibraryApp.BookList = function(){
     itemView: BookView,
   
     initialize: function(){
-      _.bindAll(this, "showMessage");
+      _.bindAll(this, "showMessage", "loadMoreBooks");
       var self = this;
       MyApp.vent.on("search:error", function(){ self.showMessage("Error, please retry later :s") });
       MyApp.vent.on("search:noSearchTerm", function(){ self.showMessage("Hummmm, can do better :)") });
       MyApp.vent.on("search:noResults", function(){ self.showMessage("No books found") });
+    },
+    
+    events: {
+      'scroll': 'loadMoreBooks'
     },
     
     appendHtml: function(collectionView, itemView){
@@ -24,6 +28,17 @@ MyApp.LibraryApp.BookList = function(){
   
     showMessage: function(message){
       this.$('.books').html('<h1 class="notFound">' + message + '</h1>');
+    },
+    
+    loadMoreBooks: function(){
+      var totalHeight = this.$('> div').height(),
+          scrollTop = this.$el.scrollTop() + this.$el.height(),
+          margin = 200;
+          
+      // if we are closer than 'margin' to the end of the content, load more books
+      if (scrollTop + margin >= totalHeight) {
+        MyApp.vent.trigger("search:more");
+      }
     }
   });
   
