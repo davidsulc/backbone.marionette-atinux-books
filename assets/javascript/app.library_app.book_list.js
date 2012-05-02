@@ -24,7 +24,7 @@ MyApp.LibraryApp.BookList = function(){
     
     search: function() {
       var searchTerm = this.$('#searchTerm').val().trim();
-      console.log("searching for ", searchTerm);
+      MyApp.vent.trigger("search:term", searchTerm);
     }
   });
   
