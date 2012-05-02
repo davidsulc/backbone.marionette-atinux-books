@@ -21,6 +21,20 @@
     <div id="bookContainer"></div>
   </script>
 
+  <script type="text/template" id="book-list-template">
+    <div style="display:table;width:100%;height:100%;">
+      <img src="assets/images/shadow-search.png" style="position:absolute;left: 0px;top: 0px;"/>
+      <img src="assets/images/shadow-search-right.png" style="position:absolute;right: 0px;top: 0px;"/>
+      <div class="leftBar"></div>
+      <div class="books"></div>
+      <div class="rightBar"></div>
+    </div>
+  </script>
+
+  <script type="text/template" id="book-template">
+    <img src="<%= (thumbnail ? thumbnail : 'http://placehold.it/100x150') %>" alt="" class="book" />
+  </script>
+
   <!-- Thirt-Party Libraries (Order matters) -->
   <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
   <script src="http://cdnjs.cloudflare.com/ajax/libs/json2/20110223/json2.js"></script>
@@ -31,6 +45,7 @@
   <!-- Application core (Order matters) -->
   <script type="text/javascript" src="assets/javascript/app.js"></script>
   <script type="text/javascript" src="assets/javascript/app.library_app.js"></script>
+  <script type="text/javascript" src="assets/javascript/app.library_app.book_list.js"></script>
 
   <script type="text/javascript">
     MyApp.start();

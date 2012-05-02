@@ -36,7 +36,7 @@ MyApp.LibraryApp = function(){
       
       var self = this;
       this.fetchBooks(searchTerm, function(books){
-        console.log(books);
+        self.reset(books);
       });
     },
     
@@ -101,14 +101,10 @@ MyApp.LibraryApp = function(){
     MyApp.content.show(MyApp.LibraryApp.layout);
   };
   
-  // for testing purposes
-  MyApp.addInitializer(function(){
-    LibraryApp.Books.search("Neuromarketing");
-  });
-  
   return LibraryApp;
 }();
 
 MyApp.addInitializer(function(){
   MyApp.LibraryApp.initializeLayout();
+  MyApp.LibraryApp.Books.search("Neuromarketing");
 });
