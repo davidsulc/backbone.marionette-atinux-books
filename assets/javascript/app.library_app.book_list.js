@@ -18,6 +18,13 @@ MyApp.LibraryApp.BookList = function(){
   var SearchView = Backbone.View.extend({
     el: "#searchBar",
     
+    initialize: function(){
+      var self = this;
+      var $spinner = self.$('#spinner');
+      MyApp.vent.on("search:start", function(){ $spinner.fadeIn(); });
+      MyApp.vent.on("search:stop", function(){ $spinner.fadeOut(); });
+    },
+    
     events: {
       'change #searchTerm': 'search'
     },
