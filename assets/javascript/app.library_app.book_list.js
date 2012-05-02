@@ -23,6 +23,9 @@ MyApp.LibraryApp.BookList = function(){
       var $spinner = self.$('#spinner');
       MyApp.vent.on("search:start", function(){ $spinner.fadeIn(); });
       MyApp.vent.on("search:stop", function(){ $spinner.fadeOut(); });
+      MyApp.vent.on("search:term", function(term){
+        self.$('#searchTerm').val(term);
+      });
     },
     
     events: {

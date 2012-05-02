@@ -108,5 +108,5 @@ MyApp.LibraryApp = function(){
 
 MyApp.addInitializer(function(){
   MyApp.LibraryApp.initializeLayout();
-  MyApp.LibraryApp.Books.search("Neuromarketing");
+  MyApp.vent.trigger("search:term", "Neuromarketing");
 });
