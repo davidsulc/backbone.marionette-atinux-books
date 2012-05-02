@@ -10,6 +10,7 @@
   <h1 class="title">Backbone.js Books</h1>
 
   <div id="content"></div>
+  <div id="modal"></div>
 
   <!-- templates -->
   <script type="text/template" id="library-layout">
@@ -35,12 +36,24 @@
     <img src="<%= (thumbnail ? thumbnail : 'http://placehold.it/100x150') %>" alt="" class="book" />
   </script>
 
+  <script type="text/template" id="book-detail-template">
+    <a class="close" data-dismiss="modal">x</a>
+    <div class="imgBook">
+      <img src="<%= (thumbnail ? thumbnail : 'http://placehold.it/200x260') %>" />
+    </div>
+    <h1><%= title %></h1>
+    <%= (subtitle ? '<h2>'+subtitle+'</h2>' : '') %>
+    <p><%= (description ? description : 'No description found') %></p>
+    <b>Google link :</b> <a href="http://books.google.fr/books?id=<%= googleId %>" target="_blank">http://books.google.fr/books?id=<%= googleId %></a>
+  </script>
+
   <!-- Thirt-Party Libraries (Order matters) -->
   <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
   <script src="http://cdnjs.cloudflare.com/ajax/libs/json2/20110223/json2.js"></script>
   <script src="./assets/javascript/vendor/underscore.js"></script>
   <script src="./assets/javascript/vendor/backbone.js"></script>
   <script src="./assets/javascript/vendor/backbone.marionette.js"></script>
+  <script src="./assets/javascript/vendor/bootstrap-modal.js"></script>
   
   <!-- Application core (Order matters) -->
   <script type="text/javascript" src="assets/javascript/app.js"></script>

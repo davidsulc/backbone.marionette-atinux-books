@@ -1,8 +1,22 @@
 MyApp.LibraryApp.BookList = function(){
   var BookList = {};
 
+  var BookDetailView = Backbone.Marionette.ItemView.extend({
+    template: "#book-detail-template",
+    className: "modal bookDetail"
+  });
+
   var BookView = Backbone.Marionette.ItemView.extend({
-    template: "#book-template"
+    template: "#book-template",
+  
+    events: {
+      'click': 'showBookDetail'
+    },
+    
+    showBookDetail: function(){
+      var detailView = new BookDetailView({model: this.model});
+      MyApp.modal.show(detailView);
+    }
   });
 
   var BookListView = Backbone.Marionette.CompositeView.extend({
