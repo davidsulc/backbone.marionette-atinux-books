@@ -9,9 +9,21 @@ MyApp.LibraryApp.BookList = function(){
     template: "#book-list-template",
     id: "bookList",
     itemView: BookView,
+  
+    initialize: function(){
+      _.bindAll(this, "showMessage");
+      var self = this;
+      MyApp.vent.on("search:error", function(){ self.showMessage("Error, please retry later :s") });
+      MyApp.vent.on("search:noSearchTerm", function(){ self.showMessage("Hummmm, can do better :)") });
+      MyApp.vent.on("search:noResults", function(){ self.showMessage("No books found") });
+    },
     
     appendHtml: function(collectionView, itemView){
       collectionView.$(".books").append(itemView.el);
+    },
+  
+    showMessage: function(message){
+      this.$('.books').html('<h1 class="notFound">' + message + '</h1>');
     }
   });
   
@@ -34,7 +46,12 @@ MyApp.LibraryApp.BookList = function(){
     
     search: function() {
       var searchTerm = this.$('#searchTerm').val().trim();
-      MyApp.vent.trigger("search:term", searchTerm);
+      if(searchTerm.length > 0){
+        MyApp.vent.trigger("search:term", searchTerm);
+      }
+      else{
+        MyApp.vent.trigger("search:noSearchTerm");
+      }
     }
   });
   

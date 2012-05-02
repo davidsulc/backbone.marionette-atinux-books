@@ -38,7 +38,12 @@ MyApp.LibraryApp = function(){
       
       var self = this;
       this.fetchBooks(searchTerm, function(books){
-        self.reset(books);
+        if(books.length < 1){
+          MyApp.vent.trigger("search:noResults");
+        }
+        else{
+          self.reset(books);
+        }
       });
     },
     
