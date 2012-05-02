@@ -17,9 +17,9 @@ MyApp.LibraryApp = function(){
     
     initialize: function(){
       var self = this;
-      _.bindAll(this, "search");
+      _.bindAll(this, "search", "moreBooks");
       MyApp.vent.on("search:term", function(term){ self.search(term); });
-      MyApp.vent.on("search:more", function(){ console.log("Need to load more books!"); });
+      MyApp.vent.on("search:more", function(){ self.moreBooks(); });
       
       // the number of books we fetch each time
       this.maxResults = 40;
@@ -30,6 +30,8 @@ MyApp.LibraryApp = function(){
       // more results from the API (to avoid multiple simultaneous calls
       this.loading = false;
       
+      // remember the previous search
+      this.previousSearch = null;
       // the maximum number of results for the previous search
       this.totalItems = null;
     },
@@ -46,6 +48,18 @@ MyApp.LibraryApp = function(){
           self.reset(books);
         }
       });
+      
+      this.previousSearch = searchTerm;
+    },
+    
+    moreBooks: function(){
+      // if we've loaded all the books for this search, there are no more to load !
+      if(this.length >= this.totalItems){
+        return true;
+      }
+      
+      var self = this;
+      this.fetchBooks(this.previousSearch, function(books){ self.add(books); });
     },
     
     fetchBooks: function(searchTerm, callback){
