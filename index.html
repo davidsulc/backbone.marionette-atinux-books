@@ -9,6 +9,10 @@
 <body>
   <h1 class="title">Backbone.js Books</h1>
 
+  <div id="menu">
+    <a href="#" class="js-menu-books">Books</a>
+    <a href="#close" class="js-menu-close">Close</a>
+  </div>
   <div id="content"></div>
   <div id="modal"></div>
 
@@ -47,6 +51,10 @@
     <b>Google link :</b> <a href="http://books.google.fr/books?id=<%= googleId %>" target="_blank">http://books.google.fr/books?id=<%= googleId %></a>
   </script>
 
+  <script type="text/template" id="close-template">
+    <p>That's all, folks !</p>
+  </script>
+
   <!-- Thirt-Party Libraries (Order matters) -->
   <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
   <script src="http://cdnjs.cloudflare.com/ajax/libs/json2/20110223/json2.js"></script>
@@ -60,6 +68,7 @@
   <script type="text/javascript" src="assets/javascript/app.library_app.js"></script>
   <script type="text/javascript" src="assets/javascript/app.library_app.book_list.js"></script>
   <script type="text/javascript" src="assets/javascript/app.library_app.routing.js"></script>
+  <script type="text/javascript" src="assets/javascript/app.closer.js"></script>
 
   <script type="text/javascript">
     MyApp.start();
