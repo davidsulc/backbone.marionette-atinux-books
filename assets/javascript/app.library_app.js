@@ -131,7 +131,7 @@ MyApp.LibraryApp = function(){
   };
   
   LibraryApp.defaultSearch = function(){
-    LibraryApp.search("Neuromarketing");
+    LibraryApp.search(LibraryApp.Books.previousSearch || "Neuromarketing");
   };
   
   return LibraryApp;
