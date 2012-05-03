@@ -30,3 +30,7 @@ MyApp.addRegions({
   content: "#content",
   modal: ModalRegion
 });
+
+MyApp.vent.on("routing:started", function(){
+  if( ! Backbone.History.started) Backbone.history.start();
+});

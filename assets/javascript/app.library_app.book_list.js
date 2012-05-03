@@ -97,7 +97,3 @@ MyApp.LibraryApp.BookList = function(){
   
   return BookList;
 }();
-  
-MyApp.vent.on("layout:rendered", function(){
-  MyApp.LibraryApp.BookList.showBooks(MyApp.LibraryApp.Books);
-});

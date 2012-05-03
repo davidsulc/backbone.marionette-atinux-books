@@ -123,10 +123,16 @@ MyApp.LibraryApp = function(){
     MyApp.content.show(MyApp.LibraryApp.layout);
   };
   
+  LibraryApp.search = function(term){
+    LibraryApp.initializeLayout();
+    MyApp.LibraryApp.BookList.showBooks(LibraryApp.Books);
+    
+    MyApp.vent.trigger("search:term", term);
+  };
+  
+  LibraryApp.defaultSearch = function(){
+    LibraryApp.search("Neuromarketing");
+  };
+  
   return LibraryApp;
 }();
-
-MyApp.addInitializer(function(){
-  MyApp.LibraryApp.initializeLayout();
-  MyApp.vent.trigger("search:term", "Neuromarketing");
-});
