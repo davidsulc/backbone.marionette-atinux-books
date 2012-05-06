@@ -8,7 +8,7 @@ html, body {
   color: #fff;
   padding-bottom: 10px;
   }
-  #credits a:hover, #credits a:visited{
+  #credits a, #credits a:hover, #credits a:visited{
     color: #fff;
   }
 
