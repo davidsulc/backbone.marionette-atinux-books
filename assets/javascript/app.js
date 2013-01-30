@@ -7,7 +7,7 @@ var ModalRegion = Backbone.Marionette.Region.extend({
   constructor: function(){
     _.bindAll(this);
     Backbone.Marionette.Region.prototype.constructor.apply(this, arguments);
-    this.on("view:show", this.showModal, this);
+    this.on("show", this.showModal, this);
   },
 
   getEl: function(selector){
