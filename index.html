@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <title>Backbone.js Books - Google Books API and Backbone.js</title>
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/bootstrap-modal.css">
+  <link href="http://fonts.googleapis.com/css?family=Sofia" rel="stylesheet" type="text/css">
+</head>
+<body>
+  <h1 class="title">Backbone.js Books</h1>
+
+  <div id="credits">
+    Written by <a href="http://davidsulc.com">David Sulc</a>, based on the <a href="http://www.atinux.fr/backbone-books/">original application</a> by <a href="http://www.atinux.fr">Atinux</a>.
+  </div>
+
+  <div id="menu">
+    <a href="#" class="js-menu-books">Books</a>
+    <a href="#close" class="js-menu-close">Close</a>
+  </div>
+  <div id="content"></div>
+  <div id="modal"></div>
+
+  <!-- templates -->
+  <script type="text/template" id="library-layout">
+    <div id="searchBar">
+      Search : <input type="text" name="search" autocomplete="off" id="searchTerm" value="" />
+      <img src="assets/images/loader.gif" alt="Loading..." id="spinner" />
+    </div>
+
+    <div id="bookContainer"></div>
+  </script>
+
+  <script type="text/template" id="book-list-template">
+    <div style="display:table;width:100%;height:100%;">
+      <img src="assets/images/shadow-search.png" style="position:absolute;left: 0px;top: 0px;"/>
+      <img src="assets/images/shadow-search-right.png" style="position:absolute;right: 0px;top: 0px;"/>
+      <div class="leftBar"></div>
+      <div class="books"></div>
+      <div class="rightBar"></div>
+    </div>
+  </script>
+
+  <script type="text/template" id="book-template">
+    <img src="<%= (thumbnail ? thumbnail : 'http://placehold.it/100x150') %>" alt="" class="book" />
+  </script>
+
+  <script type="text/template" id="book-detail-template">
+    <a class="close" data-dismiss="modal">x</a>
+    <div class="imgBook">
+      <img src="<%= (thumbnail ? thumbnail : 'http://placehold.it/200x260') %>" />
+    </div>
+    <h1><%= title %></h1>
+    <%= (subtitle ? '<h2>'+subtitle+'</h2>' : '') %>
+    <p><%= (description ? description : 'No description found') %></p>
+    <b>Google link :</b> <a href="http://books.google.fr/books?id=<%= googleId %>" target="_blank">http://books.google.fr/books?id=<%= googleId %></a>
+  </script>
+
+  <script type="text/template" id="close-template">
+    <p>That's all, folks !</p>
+  </script>
+
+  <!-- Thirt-Party Libraries (Order matters) -->
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/json2/20110223/json2.js"></script>
+  <script src="./assets/javascript/vendor/underscore.js"></script>
+  <script src="./assets/javascript/vendor/backbone.js"></script>
+  <script src="./assets/javascript/vendor/backbone.marionette.js"></script>
+  <script src="./assets/javascript/vendor/bootstrap-modal.js"></script>
+  
+  <!-- Application core (Order matters) -->
+  <script type="text/javascript" src="assets/javascript/app.js"></script>
+  <script type="text/javascript" src="assets/javascript/app.library_app.js"></script>
+  <script type="text/javascript" src="assets/javascript/app.library_app.book_list.js"></script>
+  <script type="text/javascript" src="assets/javascript/app.library_app.routing.js"></script>
+  <script type="text/javascript" src="assets/javascript/app.closer.js"></script>
+
+  <script type="text/javascript">
+    MyApp.start();
+  </script>
+</body>
+</html>
